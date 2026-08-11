@@ -6,20 +6,113 @@
     <title>France Chaudhary - Portfolio</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; padding: 20px; max-width: 500px; margin: 0 auto; }
+        
+        body { 
+            background-color: #0f172a; 
+            color: #f8fafc; 
+            padding: 20px; 
+            max-width: 500px; 
+            margin: 0 auto; 
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); }
+        }
+
         .header { text-align: center; padding: 20px 0; border-bottom: 1px solid #334155; }
-        .avatar { width: 80px; height: 80px; border-radius: 50%; background: #38bdf8; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 32px; font-weight: bold; color: #0f172a; }
-        h1 { color: #38bdf8; font-size: 24px; }
+        
+        .avatar { 
+            width: 85px; 
+            height: 85px; 
+            border-radius: 50%; 
+            background: linear-gradient(135deg, #38bdf8, #818cf8); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 12px; 
+            font-size: 34px; 
+            font-weight: bold; 
+            color: #0f172a; 
+            animation: pulseGlow 3s infinite;
+            transition: transform 0.3s ease;
+        }
+        .avatar:hover { transform: scale(1.08) rotate(5deg); }
+
+        h1 { color: #38bdf8; font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
         .subtitle { color: #94a3b8; font-size: 14px; margin-top: 4px; }
-        .section { margin: 24px 0; }
-        h2 { color: #f1f5f9; font-size: 18px; margin-bottom: 12px; border-left: 3px solid #38bdf8; padding-left: 8px; text-align: left; }
-        p.about-text { color: #cbd5e1; font-size: 14px; line-height: 1.5; text-align: left; }
+        
+        .section { margin: 28px 0; animation: fadeIn 1s ease-in-out; }
+        h2 { color: #f1f5f9; font-size: 18px; margin-bottom: 12px; border-left: 3px solid #38bdf8; padding-left: 10px; text-align: left; }
+        p.about-text { color: #cbd5e1; font-size: 14px; line-height: 1.6; text-align: left; }
+        
         .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 5px 12px; border-radius: 16px; font-size: 13px; }
-        .project-card { background: #1e293b; padding: 14px; border-radius: 10px; border: 1px solid #334155; margin-bottom: 10px; text-align: left; }
-        .project-card h3 { color: #38bdf8; font-size: 15px; margin-bottom: 4px; }
-        .project-card p { color: #94a3b8; font-size: 13px; }
-        .btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #38bdf8; color: #0f172a; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 14px; }
+        .tag { 
+            background: #1e293b; 
+            color: #38bdf8; 
+            border: 1px solid #334155; 
+            padding: 6px 14px; 
+            border-radius: 20px; 
+            font-size: 13px; 
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .tag:hover { 
+            background: #38bdf8; 
+            color: #0f172a; 
+            transform: translateY(-2px); 
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        .project-card { 
+            background: #1e293b; 
+            padding: 16px; 
+            border-radius: 12px; 
+            border: 1px solid #334155; 
+            margin-bottom: 12px; 
+            text-align: left; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover { 
+            transform: translateY(-4px); 
+            border-color: #38bdf8; 
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15); 
+        }
+        .project-card h3 { color: #38bdf8; font-size: 16px; margin-bottom: 6px; }
+        .project-card p { color: #94a3b8; font-size: 13px; line-height: 1.4; }
+
+        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+        .btn { 
+            display: inline-block; 
+            padding: 11px 20px; 
+            background: #38bdf8; 
+            color: #0f172a; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 8px; 
+            font-size: 14px; 
+            transition: all 0.3s ease;
+        }
+        .btn:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); 
+            background: #7dd3fc;
+        }
+        .btn-outline { 
+            background: transparent; 
+            color: #38bdf8; 
+            border: 1px solid #38bdf8; 
+        }
+        .btn-outline:hover { 
+            background: rgba(56, 189, 248, 0.15); 
+            color: #38bdf8; 
+        }
     </style>
 </head>
 <body>
@@ -57,7 +150,11 @@
     </div>
 
     <div class="section" style="text-align: center;">
-        <a href="#" class="btn">Contact Me</a>
+        <h2>Connect With Me</h2>
+        <div class="btn-group">
+            <a href="mailto:francechaudhary@gmail.com" class="btn">📧 Email Me</a>
+            <a href="https://github.com/ranafrance001-sketch" target="_blank" class="btn btn-outline">🐱 GitHub Profile</a>
+        </div>
     </div>
 </body>
 </html>
