@@ -1,0 +1,35 @@
+cat << 'EOF' > index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>My Portfolio</title>
+                <style>
+                        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+                                body { background-color: #0f172a; color: #f8fafc; text-align: center; padding: 40px 20px; }
+                                        .card { background: #1e293b; max-width: 400px; margin: 0 auto; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+                                                .avatar { width: 90px; height: 90px; border-radius: 50%; background: #38bdf8; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 36px; font-weight: bold; color: #0f172a; }
+                                                        h1 { color: #38bdf8; font-size: 26px; margin-bottom: 8px; }
+                                                                p { color: #94a3b8; font-size: 15px; margin-bottom: 20px; }
+                                                                        .tag { display: inline-block; background: #334155; color: #38bdf8; padding: 6px 12px; border-radius: 20px; font-size: 13px; margin: 4px; }
+                                                                                .btn { display: inline-block; margin-top: 25px; padding: 12px 24px; background: #38bdf8; color: #0f172a; text-decoration: none; font-weight: bold; border-radius: 8px; }
+                                                                                    </style>
+                                                                                    </head>
+                                                                                    <body>
+                                                                                        <div class="card">
+                                                                                                <div class="avatar">F</div>
+                                                                                                        <h1>France Chaudhary</h1>
+                                                                                                                <p>Gamer & Python Developer 🚀</p>
+                                                                                                                        <div>
+                                                                                                                                    <span class="tag">Python</span>
+                                                                                                                                                <span class="tag">HTML/CSS</span>
+                                                                                                                                                            <span class="tag">Codespaces</span>
+                                                                                                                                                                        <span class="tag">Gaming</span>
+                                                                                                                                                                                </div>
+                                                                                                                                                                                        <a href="#" class="btn">Contact Me</a>
+                                                                                                                                                                                            </div>
+                                                                                                                                                                                            </body>
+                                                                                                                                                                                            </html>
+                                                                                                                                                                                            EOF
+                                                                                                                                                                                            

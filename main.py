@@ -1,15 +1,12 @@
-import matplotlib.pyplot as plt
+import random
+import time
 
-# Data
-categories = ['A', 'B', 'C', 'D']
-values = [10, 25, 15, 30]
+s = "0123456789ABCDEFHIJKLMNOPQRSTUVWXYZ@#$%^&*"
 
-# Bar Graph plot karein
-plt.bar(categories, values, color='orange')
-plt.title("Bar Graph Example")
-plt.xlabel("Categories")
-plt.ylabel("Values")
-
-# Image save karein
-plt.savefig("graph.png")
-print("✅ Bar graph successfully 'graph.png' file mein save ho gaya hai!")
+try:
+    while True:
+        line = "".join(random.choice(s) if random.random() > 0.7 else " " for _ in range(30))
+        print(f"\033[32m{line}\033[0m")
+        time.sleep(0.05)
+except KeyboardInterrupt:
+    print("\nMatrix Stopped!")
