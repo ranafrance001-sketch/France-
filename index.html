@@ -3,72 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>France Chaudhary - Portfolio</title>
+    <title>France Chaudhary - Portfolio & Animated Snake Game</title>
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; padding: 20px; max-width: 500px; margin: 0 auto; animation: fadeIn 0.8s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); } 50% { box-shadow: 0 0 25px rgba(56, 189, 248, 0.6); } }
-        .header { text-align: center; padding: 20px 0; border-bottom: 1px solid #334155; }
-        .avatar { width: 85px; height: 85px; border-radius: 50%; background: linear-gradient(135deg, #38bdf8, #818cf8); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 34px; font-weight: bold; color: #0f172a; animation: pulseGlow 3s infinite; transition: transform 0.3s ease; }
-        .avatar:hover { transform: scale(1.08) rotate(5deg); }
-        h1 { color: #38bdf8; font-size: 26px; font-weight: 700; }
-        .subtitle { color: #94a3b8; font-size: 14px; margin-top: 4px; }
-        .section { margin: 28px 0; }
-        h2 { color: #f1f5f9; font-size: 18px; margin-bottom: 12px; border-left: 3px solid #38bdf8; padding-left: 10px; }
-        p.about-text { color: #cbd5e1; font-size: 14px; line-height: 1.6; }
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: #1e293b; color: #38bdf8; border: 1px solid #334155; padding: 6px 14px; border-radius: 20px; font-size: 13px; transition: all 0.3s ease; }
-        .tag:hover { background: #38bdf8; color: #0f172a; transform: translateY(-2px); }
-        .project-link { text-decoration: none; color: inherit; display: block; margin-bottom: 12px; }
-        .project-card { background: #1e293b; padding: 16px; border-radius: 12px; border: 1px solid #334155; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .project-card:hover { transform: translateY(-4px); border-color: #38bdf8; box-shadow: 0 8px 20px rgba(56, 189, 248, 0.15); }
-        .project-card h3 { color: #38bdf8; font-size: 16px; margin-bottom: 6px; }
-        .project-card p { color: #94a3b8; font-size: 13px; }
-        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
-        .btn { display: inline-block; padding: 11px 20px; background: #38bdf8; color: #0f172a; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 14px; transition: all 0.3s ease; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(56, 189, 248, 0.4); }
-        .btn-outline { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: #0f172a; color: #f8fafc; text-align: center; padding: 20px 10px; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #38bdf8; box-shadow: 0 0 20px rgba(56,189,248,0.3); margin-bottom: 15px; }
+        h1 { font-size: 2rem; color: #38bdf8; margin-bottom: 5px; }
+        .subtitle { font-size: 1rem; color: #94a3b8; margin-bottom: 25px; }
+        
+        .game-card { background: #1e293b; border-radius: 16px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #334155; margin: 20px 0; }
+        .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .score-board { font-size: 1.2rem; font-weight: bold; color: #22c55e; }
+        canvas { background: #0b0f19; border-radius: 12px; max-width: 100%; border: 2px solid #334155; touch-action: none; }
+        
+        .controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 200px; margin: 15px auto 0; }
+        .btn { background: #334155; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
+        .btn:active { background: #38bdf8; }
+        .btn-up { grid-column: 2; }
+        .btn-left { grid-column: 1; grid-row: 2; }
+        .btn-down { grid-column: 2; grid-row: 2; }
+        .btn-right { grid-column: 3; grid-row: 2; }
+        
+        .social-links { margin-top: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .social-btn { padding: 10px 20px; background: #334155; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; transition: 0.3s; }
+        .social-btn:hover { background: #38bdf8; transform: translateY(-2px); }
     </style>
 </head>
 <body>
-    <div class="header">
-        <img src="profile.jpg" class="avatar" alt="Profile Photo" style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+    <div class="container">
+        <img src="profile.jpg" alt="France Chaudhary" class="avatar" onerror="this.src='https://via.placeholder.com/120'">
         <h1>France Chaudhary</h1>
         <p class="subtitle">Gamer & Python Developer 🚀</p>
-    </div>
-    <div class="section">
-        <h2>About Me</h2>
-        <p class="about-text">Python developer working on custom games and web applications. Passionate about coding and mobile gaming.</p>
-    </div>
-    <div class="section">
-        <h2>Skills & Tech Stack</h2>
-        <div class="skills-grid">
-            <span class="tag">Python</span>
-            <span class="tag">HTML / CSS</span>
-            <span class="tag">Codespaces</span>
-            <span class="tag">Gaming Tech</span>
-        </div>
-    </div>
-    <div class="section">
-        <h2>My Projects</h2>
-        <a href="snake.html" class="project-link">
-            <div class="project-card">
-                <h3>🐍 Python Snake Game 🎮 (Play Now)</h3>
-                <p>Click here to play the interactive Snake game built using HTML & JS.</p>
+
+        <div class="game-card">
+            <div class="game-header">
+                <h2>🐍 Animated Snake Game</h2>
+                <div class="score-board">Score: <span id="score">0</span></div>
             </div>
-        </a>
-        <div class="project-card">
-            <h3>🌐 Personal Portfolio</h3>
-            <p>Responsive developer portfolio built in GitHub Codespaces.</p>
+            <canvas id="gameCanvas" width="340" height="340"></canvas>
+            
+            <div class="controls">
+                <button class="btn btn-up" onclick="setDir('UP')">▲</button>
+                <button class="btn btn-left" onclick="setDir('LEFT')">◀</button>
+                <button class="btn btn-down" onclick="setDir('DOWN')">▼</button>
+                <button class="btn btn-right" onclick="setDir('RIGHT')">▶</button>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/" class="social-btn" target="_blank">Instagram</a>
+            <a href="https://github.com/ranafrance001-sketch" class="social-btn" target="_blank">GitHub</a>
         </div>
     </div>
-    <div class="section" style="text-align: center;">
-        <h2>Connect With Me</h2>
-        <div class="btn-group">
-            <a href="mailto:francechaudhary@gmail.com" class="btn">📧 Email Me</a>
-            <a href="https://github.com/ranafrance001-sketch" target="_blank" class="btn btn-outline">🐱 GitHub Profile</a>
-        </div>
-    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const grid = 17;
+        const count = canvas.width / grid;
+
+        let score = 0;
+        let snake = [{x: 8, y: 8}, {x: 7, y: 8}];
+        let food = {x: 12, y: 8};
+        let dx = 1, dy = 0;
+        let pulse = 0;
+
+        function gameLoop() {
+            setTimeout(() => {
+                requestAnimationFrame(gameLoop);
+            }, 1000 / 10); 
+
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+
+            if (head.x < 0) head.x = count - 1;
+            if (head.x >= count) head.x = 0;
+            if (head.y < 0) head.y = count - 1;
+            if (head.y >= count) head.y = 0;
+
+            for (let part of snake) {
+                if (part.x === head.x && part.y === head.y) {
+                    snake = [{x: 8, y: 8}];
+                    score = 0;
+                    document.getElementById('score').innerText = score;
+                    dx = 1; dy = 0;
+                    return;
+                }
+            }
+
+            snake.unshift(head);
+
+            if (head.x === food.x && head.y === food.y) {
+                score += 10;
+                document.getElementById('score').innerText = score;
+                food = {x: Math.floor(Math.random() * count), y: Math.floor(Math.random() * count)};
+            } else {
+                snake.pop();
+            }
+
+            ctx.fillStyle = '#0b0f19';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            pulse += 0.2;
+            const radius = (grid / 2 - 2) + Math.sin(pulse) * 1.5;
+            ctx.fillStyle = '#f43f5e';
+            ctx.beginPath();
+            ctx.arc(food.x * grid + grid/2, food.y * grid + grid/2, Math.max(2, radius), 0, Math.PI * 2);
+            ctx.fill();
+
+            snake.forEach((part, i) => {
+                ctx.fillStyle = i === 0 ? '#22c55e' : '#4ade80';
+                ctx.beginPath();
+                ctx.roundRect(part.x * grid + 1, part.y * grid + 1, grid - 2, grid - 2, 4);
+                ctx.fill();
+            });
+        }
+
+        function setDir(dir) {
+            if (dir === 'UP' && dy === 0) { dx = 0; dy = -1; }
+            if (dir === 'DOWN' && dy === 0) { dx = 0; dy = 1; }
+            if (dir === 'LEFT' && dx === 0) { dx = -1; dy = 0; }
+            if (dir === 'RIGHT' && dx === 0) { dx = 1; dy = 0; }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowUp') setDir('UP');
+            if (e.key === 'ArrowDown') setDir('DOWN');
+            if (e.key === 'ArrowLeft') setDir('LEFT');
+            if (e.key === 'ArrowRight') setDir('RIGHT');
+        });
+
+        requestAnimationFrame(gameLoop);
+    </script>
 </body>
 </html>
